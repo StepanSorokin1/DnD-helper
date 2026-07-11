@@ -19,12 +19,28 @@ def input_dice(prompt):
 
 def input_bonus(prompt):
     while True:
-        value = input(prompt).strip().lower()
-        try:
-            return int(value)
-        except ValueError:
-            print("Неправильный формат ввода!")
+        value = input(prompt).strip()
+        if value[0] in ["+", "-"] or value == "0":
+            if value == "0":
+                return int(value)
+            if value[0] == "-" and value[1:].isdigit():
+                return int(value)
+            if value[0] == "+" and value[1:].isdigit():
+                return int(value[1:])
+        print("Неправильный формат ввода!")
 
+def input_ac(prompt):
+    while True:
+        value = input(prompt).strip()
+        if value.isdigit():
+            value = int(value)
+            if value > 0:
+                return value
+            else:
+                print("КД должно быть больше 0!")
+                continue
+        print("Неправильный формат ввода!")
+        
 def is_repeat():
     while True:
         answer = input("Повторить? (y/n): ").strip().lower()
