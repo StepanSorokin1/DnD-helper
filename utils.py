@@ -17,6 +17,14 @@ def input_dice(prompt):
                     return value
         print("Неправильный формат ввода!")
 
+def input_bonus(prompt):
+    while True:
+        value = input(prompt).strip().lower()
+        try:
+            return int(value)
+        except ValueError:
+            print("Неправильный формат ввода!")
+
 def is_repeat():
     while True:
         answer = input("Повторить? (y/n): ").strip().lower()
